@@ -1,5 +1,8 @@
 import CountActionTypes from './count.types'
 
-export const setCurrentUser = () => ({
-  type: CountActionTypes.INCREMENT_FROM_SAGA,
+export const increment = () => ({
+  type: CountActionTypes.INCREMENT,
+})
+export const decrement = () => ({
+  type: CountActionTypes.DECREMENT,
 })

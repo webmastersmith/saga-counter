@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-
+import { connect } from 'react-redux'
+import { increment, decrement } from './components/redux/count.actions'
 const Global = createGlobalStyle`
     * {
         box-sizing: border-box;
@@ -27,16 +28,8 @@ const Button = styled.button`
 `
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      count: 0,
-    }
-  }
-
   render() {
-    const { count } = this.state
+    const { count, increase, decrease } = this.props
     return (
       <Wrapper>
         <Global />
@@ -45,16 +38,18 @@ class App extends React.Component {
           <span>{count}</span>
         </h1>
         <div>
-          <Button onClick={() => this.setState({ count: count + 1 })}>
-            Increase
-          </Button>
-          <Button onClick={() => this.setState({ count: count - 1 })}>
-            Decrease
-          </Button>
+          <Button onClick={increase}>Increase</Button>
+          <Button onClick={decrease}>Decrease</Button>
         </div>
       </Wrapper>
     )
   }
 }
 
-export default App
+const mapStateToProps = (state) => ({ count: state.app.count })
+const mapDispatchToProps = (dispatch) => ({
+  increase: () => dispatch(increment()),
+  decrease: () => dispatch(decrement()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

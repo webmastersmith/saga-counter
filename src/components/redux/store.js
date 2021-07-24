@@ -4,9 +4,7 @@ import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
 import rootReducer from './root-reducer'
-
 import { incrementSaga } from './count.sagas'
-
 // can be passed an object with config settings, we don't need to change anything.
 const sagaMiddleWare = createSagaMiddleware()
 
@@ -21,4 +19,4 @@ const store = createStore(rootReducer, applyMiddleware(...middlewares))
 
 sagaMiddleWare.run(incrementSaga)
 
-export { store }
+export default store
