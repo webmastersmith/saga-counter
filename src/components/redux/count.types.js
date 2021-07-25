@@ -1,5 +1,7 @@
 const CountActionTypes = {
   INCREMENT: 'INCREMENT',
+  INCREMENT_SAGA: 'INCREMENT_SAGA',
   DECREMENT: 'DECREMENT',
+  DECREMENT_SAGA: 'DECREMENT_SAGA',
 }
 export default CountActionTypes

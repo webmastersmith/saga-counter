@@ -38,8 +38,8 @@ class App extends React.Component {
           <span>{count}</span>
         </h1>
         <div>
-          <Button onClick={increase}>Increase</Button>
-          <Button onClick={decrease}>Decrease</Button>
+          <Button onClick={() => increase(count)}>Increase</Button>
+          <Button onClick={() => decrease(count)}>Decrease</Button>
         </div>
       </Wrapper>
     )
@@ -48,8 +48,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({ count: state.app.count })
 const mapDispatchToProps = (dispatch) => ({
-  increase: () => dispatch(increment()),
-  decrease: () => dispatch(decrement()),
+  increase: (item) => dispatch(increment(item)),
+  decrease: (item) => dispatch(decrement(item)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

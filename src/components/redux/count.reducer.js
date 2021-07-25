@@ -7,14 +7,15 @@ const INITIAL_STATE = {
 const countReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CountActionTypes.INCREMENT:
+      console.log('reducer increment', action.payload)
       return {
         ...state,
-        count: state.count + 1,
+        count: action.payload,
       }
     case CountActionTypes.DECREMENT:
       return {
         ...state,
-        count: state.count - 1,
+        count: action.payload,
       }
     default:
       return state
