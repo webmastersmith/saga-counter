@@ -1,11 +1,14 @@
-import { put, takeLatest, all } from 'redux-saga/effects'
+import { put, takeLatest, all, select } from 'redux-saga/effects'
 import CountActionTypes from './count.types'
+import { getCount } from './count.selectors'
 
 // const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
 function* incrementSaga(action) {
   // yield delay(2000)
   const count = action.payload
+  const state = yield select(getCount)
+  console.log('select', state)
   yield put({ type: CountActionTypes.INCREMENT, payload: count + 1 })
 }
 function* decrementSaga(action) {
